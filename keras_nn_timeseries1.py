@@ -9,6 +9,7 @@ from keras.layers import Dense
 # fix random seed for reproducibility
 np.random.seed(7)
 
+#####################################  DATA PREPARATION  ##########################################
 # load the ds
 df = pd.read_csv('data/international-airline-passengers.csv', 
 	             usecols=[1], engine='python', skipfooter=3)
@@ -34,14 +35,28 @@ def create_ds(ds, lag=1):
 lag = 1
 trainX, trainY = create_ds(train, lag)
 testX, testY = create_ds(test, lag)
+n_obs = len(trainX)
 
-# create and fit a simple network with: 
-# 1 input, 1 hidden layer with 8 neurons, and an output layer
+######################################  FIT SHALLOW NN  ###########################################
+
+# The Sequential model is a linear stack of layers:
+# https://keras.io/getting-started/sequential-model-guide/
 model = Sequential()
+# hidden layer
+# The ReLU function is f(x)=max(0,x)
+# http://stats.stackexchange.com/questions/226923/why-do-we-use-relu-in-neural-networks-and-how-do-we-use-it
 model.add(Dense(8, input_dim=lag, activation='relu'))
+# output layer
 model.add(Dense(1))
+# compile
+# Adam: https://arxiv.org/abs/1412.6980v8
 model.compile(loss='mean_squared_error', optimizer='adam')
-model.fit(trainX, trainY, nb_epoch=200, batch_size=2, verbose=2)
+# nb_epoch: total number of iterations on the data.
+# verbose: 0 for no logging to stdout, 1 for progress bar logging, 2 for one log line per epoch
+# batch_size: number of samples per gradient update (each foward/backward propagation step)
+model.fit(trainX, trainY, nb_epoch=200, batch_size=2, verbose=1)
+
+######################################  EVALUATE/PLOT #############################################
 
 # Estimate model performance
 trainScore = model.evaluate(trainX, trainY, verbose=0)
