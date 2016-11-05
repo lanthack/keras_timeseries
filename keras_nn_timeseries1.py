@@ -1,9 +1,8 @@
-# Fit a shallow nueral network with 1 input, 1 hidden layer with 8 neurons, and an output layer
+# Fit a shallow nueral network with 1 input, 1 hidden layer with 8 neurons, and an output layer.
 # A time series problem is converted into a regression problem by fitting y(t) to y(t-lag)
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import math
 from keras.models import Sequential
 from keras.layers import Dense
 
@@ -11,7 +10,8 @@ from keras.layers import Dense
 np.random.seed(7)
 
 # load the ds
-df = pd.read_csv('data/international-airline-passengers.csv', usecols=[1], engine='python', skipfooter=3)
+df = pd.read_csv('data/international-airline-passengers.csv', 
+	             usecols=[1], engine='python', skipfooter=3)
 ds = df.values
 ds = ds.astype('float32')
 
@@ -35,7 +35,8 @@ lag = 1
 trainX, trainY = create_ds(train, lag)
 testX, testY = create_ds(test, lag)
 
-# create and fit a simple network with: 1 input, 1 hidden layer with 8 neurons, and an output layer
+# create and fit a simple network with: 
+# 1 input, 1 hidden layer with 8 neurons, and an output layer
 model = Sequential()
 model.add(Dense(8, input_dim=lag, activation='relu'))
 model.add(Dense(1))
@@ -44,9 +45,9 @@ model.fit(trainX, trainY, nb_epoch=200, batch_size=2, verbose=2)
 
 # Estimate model performance
 trainScore = model.evaluate(trainX, trainY, verbose=0)
-print('Train Score: %.2f MSE (%.2f RMSE)' % (trainScore, math.sqrt(trainScore)))
+print('Train Score: %.2f MSE (%.2f RMSE)' % (trainScore, np.sqrt(trainScore)))
 testScore = model.evaluate(testX, testY, verbose=0)
-print('Test Score: %.2f MSE (%.2f RMSE)' % (testScore, math.sqrt(testScore)))
+print('Test Score: %.2f MSE (%.2f RMSE)' % (testScore, np.sqrt(testScore)))
 
 # generate() predictions for training
 trainPredict = model.predict(trainX)
