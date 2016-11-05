@@ -1,6 +1,6 @@
 # keras_timeseries
 
-In this exercise, we attempt to recreate an example by Jason Brownlee.
+In this exercise, we recreate an example by Jason Brownlee. The docstrings have been expanded to provide explanation of the arguments to the keras functions.
 
 References:
 * http://machinelearningmastery.com/ 
