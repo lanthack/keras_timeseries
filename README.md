@@ -3,17 +3,20 @@
 In this exercise, we recreate an example by Jason Brownlee. Somethings were modified:
 
 1. The docstrings have been expanded to provide explanation of the arguments to the keras functions.
-2. The file is now intended to run using a terminal command incorporating the click package; http://click.pocoo.org/
+2. The file is now intended to run using a terminal command incorporating the click package; http://click.pocoo.org/.
 3. Once this file is run, a png-fortmat image will be saved to the current working directly.
+
 
 To run this file using the last time lag `y(t-1)` as a predictor for `y(t)`, type into your terminal command line:
 ```
 python keras_nn_timeseries1.py --lag 1
 ```
+
 To use the last 10 time lags `y(t-1), ... y(t-10)` as a predictors for `y(t)`, type into your terminal command line:
 ```
 python keras_nn_timeseries1.py --lag 10
 ```
+
 For help, type into your terminal command line:
 ```
 python keras_nn_timeseries1.py --help
