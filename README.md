@@ -12,14 +12,16 @@ To run this file using the last time lag `y(t-1)` as a predictor for `y(t)`, typ
 ```
 python keras_nn_timeseries1.py --lag 1
 ```
-You will obtian the following plot:
+You should obtian the following plot:
+
 <img src="https://github.com/frogstar-world-b/keras_timeseries/blob/master/lag1.png" width="400">
 
 To use the last 10 time lags `y(t-1), ... y(t-10)` as a predictors for `y(t)`, type into your terminal command line:
 ```
 python keras_nn_timeseries1.py --lag 10
 ```
-You will obtian the following plot:
+You should obtian the following plot:
+
 <img src="https://github.com/frogstar-world-b/keras_timeseries/blob/master/lag10.png" width="400">
 
 For help, type into your terminal command line:
