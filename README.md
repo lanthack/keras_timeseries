@@ -31,4 +31,4 @@ python keras_nn_timeseries1.py --help
 * http://machinelearningmastery.com/ 
 * https://datamarket.com/data/set/22u3/
 
-Code and data licences are in the references.
+Code and data licenses are in the references.
