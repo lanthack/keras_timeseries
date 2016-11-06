@@ -90,7 +90,7 @@ def main(lag):
 	plt.plot(trainPredictPlot, label = 'predictd training set')
 	plt.plot(testPredictPlot, label = 'predicted test set')
 	plt.ylabel('# of international airline passengers', fontsize=16)
-	plt.xlabel('# of months from Jan 49 – Dec 60 ', fontsize=16)
+	plt.xlabel('# of months from Jan 49 – Dec 60', fontsize=16)
 	plt.title('Using the last {} lags as predictor(s)'.format(lag), fontsize=16)
 	plt.legend(loc="upper left")
 	plt.savefig('lag{}.png'.format(lag))
